@@ -1,3 +1,4 @@
+import asyncio
 from discord.ext import commands
 
 client = commands.Bot(command_prefix='ac!')
@@ -83,5 +84,30 @@ async def delete_roles(ctx, role_name, *, exceptions='None'):
         else:
             await ctx.send(f'Found and deleted {deleted_roles} channels')
 
+
+@client.command()
+@commands.has_permissions(manage_mesages=True)
+async def delete_messages(ctx, for_, *, message_):
+    guild = int(ctx.guild.id)
+    if str(for_).endswith('m'):
+        for_ = for_[:-1]
+        for_ = int(for_) * 60
+    elif str(for_).endswith('s'):
+        for_ = for_[:-1]
+        for_ = int(for_)
+    else:
+        for_ = for_[:-1]
+        for_ = int(for_)
+    print(for_)
+
+    @client.listen()
+    async def on_message(message):
+        print('b')
+        if message.guild.id == ctx.guild.id:
+            if message == message:
+                await message.delete()
+
+    await asyncio.sleep(for_)
+    client.remove_listener(func=on_message)
 
 client.run(TOKEN)
