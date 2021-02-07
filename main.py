@@ -98,11 +98,9 @@ async def delete_messages(ctx, for_, *, message_):
     else:
         for_ = for_[:-1]
         for_ = int(for_)
-    print(for_)
 
     @client.listen()
     async def on_message(message):
-        print('b')
         if message.guild.id == ctx.guild.id:
             if message == message:
                 await message.delete()
