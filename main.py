@@ -86,7 +86,7 @@ async def delete_roles(ctx, role_name, *, exceptions='None'):
 
 
 @client.command()
-@commands.has_permissions(manage_mesages=True)
+@commands.has_permissions(manage_guild=True)
 async def delete_messages(ctx, for_, *, message_):
     guild = int(ctx.guild.id)
     if str(for_).endswith('m'):
