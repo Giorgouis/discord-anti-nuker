@@ -48,7 +48,7 @@ async def delete_channels(ctx, channel_name, *, exceptions='None'):
 
 
 @client.command()
-@commands.has_permissions(manage_roles=True, administrator=True)
+@commands.has_guild_permissions(manage_roles=True, administrator=True)
 async def delete_roles(ctx, role_name, *, exceptions='None'):
     deleted_roles = 0
     if exceptions == 'None':
@@ -86,13 +86,16 @@ async def delete_roles(ctx, role_name, *, exceptions='None'):
 
 
 @client.command()
-@commands.has_permissions(manage_guild=True)
+@commands.has_guild_permissions(manage_guild=True)
 async def delete_messages(ctx, for_, *, message_):
     guild = int(ctx.guild.id)
     if str(for_).endswith('m'):
         for_ = for_[:-1]
         for_ = int(for_) * 60
     elif str(for_).endswith('s'):
+        for_ = for_[:-1]
+        for_ = int(for_)
+    elif str(for_).endswith('h'):
         for_ = for_[:-1]
         for_ = int(for_)
     else:
@@ -102,7 +105,7 @@ async def delete_messages(ctx, for_, *, message_):
     @client.listen()
     async def on_message(message):
         if message.guild.id == ctx.guild.id:
-            if message == message:
+            if message.content == message_:
                 await message.delete()
 
     await asyncio.sleep(for_)
