@@ -23,7 +23,10 @@ async def delete_channels(ctx, channel_name, *, exceptions='None'):
         if deleted_channels == 0:
             await ctx.send("Couldn't find any channels with that name")
         else:
-            await ctx.send(f'Found and deleted {deleted_channels} channels')
+            try:
+                await ctx.send(f'Found and deleted {deleted_channels} channels')
+            except Exception:  # If the channel you typed the message is deleted some errors occure
+                pass
     else:
         exceptions_cont = exceptions.split(', ')
         guild = client.get_guild(ctx.guild.id)
@@ -44,7 +47,10 @@ async def delete_channels(ctx, channel_name, *, exceptions='None'):
         if deleted_channels == 0:
             await ctx.send("Couldn't find any channels with that name")
         else:
-            await ctx.send(f'Found and deleted {deleted_channels} channels')
+            try:
+                await ctx.send(f'Found and deleted {deleted_channels} channels')
+            except Exception:  # If the channel you typed the message is deleted some errors occure
+                pass
 
 
 @client.command()
@@ -110,5 +116,6 @@ async def delete_messages(ctx, for_, *, message_):
 
     await asyncio.sleep(for_)
     client.remove_listener(func=on_message)
+
 
 client.run(TOKEN)
