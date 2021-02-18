@@ -26,9 +26,9 @@ run the code
  #### delete_channels channel_name exceptions
   ###### channel_name: name of the channels you want to delete
   ###### exceptions: channel IDs from channels with the same name you might not want to delete
-  if more than 1, seperate with `, `
+  if more than 1, seperate with ', '
  
  #### delete_roles role_name exceptions
   ###### role_name: name of the roles you want to delete
   ###### exceptions: role Ids from roles with the same name you might not want to delete
-  if more than 1, seperate with `, `
+  if more than 1, seperate with ', '
