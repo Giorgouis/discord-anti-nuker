@@ -34,5 +34,5 @@ run the code
   if more than 1, seperate with ', '
   
 #### delete_roles_no_ex
- ####### role_name: name of the roles you want to delete
+###### role_name: name of the roles you want to delete
  This was addded beacause if role name has spaces it just doesn't work
