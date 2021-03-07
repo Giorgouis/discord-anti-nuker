@@ -35,4 +35,4 @@ run the code
   
 #### delete_roles_no_ex
 ###### role_name: name of the roles you want to delete
- This was addded beacause if role name has spaces it just doesn't work
+###### This was addded beacause if role name has spaces it just doesn't work
