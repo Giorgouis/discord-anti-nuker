@@ -92,6 +92,22 @@ async def delete_roles(ctx, role_name, *, exceptions='None'):
 
 
 @client.command()
+@commands.has_guild_permissions(manage_roles=True, administrator=True)
+async def delete_roles_no_ex(ctx, role_name):
+    deleted_roles = 0
+    for role in ctx.guild.roles:
+        is_exception = False
+        if role.name == role_name:
+            await role.delete()
+            deleted_roles += 1
+        if deleted_roles == 0:
+            await ctx.send("Couldn't find any channels with that name")
+        else:
+            await ctx.send(f'Found and deleted {deleted_roles} channels')
+    
+
+
+@client.command()
 @commands.has_guild_permissions(manage_guild=True)
 async def delete_messages(ctx, for_, *, message_):
     guild = int(ctx.guild.id)
