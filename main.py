@@ -66,9 +66,9 @@ async def delete_roles(ctx, role_name, *, exceptions=None):
                 await role.delete()
                 deleted_roles += 1
         if deleted_roles == 0:
-            await ctx.send("Couldn't find any channels with that name")
+            await ctx.send("Couldn't find any roles with that name")
         else:
-            await ctx.send(f'Found and deleted {deleted_roles} channels')
+            await ctx.send(f'Found and deleted {deleted_roles} roles')
     else:
         try:
             exceptions_cont = exceptions.split(' --exc ')
@@ -103,9 +103,9 @@ async def delete_roles(ctx, role_name, *, exceptions=None):
                     deleted_roles += 1
 
         if deleted_roles == 0:
-            await ctx.send("Couldn't find any channels with that name")
+            await ctx.send("Couldn't find any roles with that name")
         else:
-            await ctx.send(f'Found and deleted {deleted_roles} channels')
+            await ctx.send(f'Found and deleted {deleted_roles} roles')
 
 
 @client.command()
