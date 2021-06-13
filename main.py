@@ -28,6 +28,7 @@ async def delete_channels(ctx, channel_name, *, exceptions='None'):
             except Exception:  # If the channel you typed the message is deleted some errors occure
                 pass
     else:
+
         exceptions_cont = exceptions.split(', ')
         guild = client.get_guild(ctx.guild.id)
         for channel in ctx.guild.text_channels:
@@ -55,9 +56,9 @@ async def delete_channels(ctx, channel_name, *, exceptions='None'):
 
 @client.command()
 @commands.has_guild_permissions(manage_roles=True, administrator=True)
-async def delete_roles(ctx, role_name, *, exceptions='None'):
+async def delete_roles(ctx, role_name, *, exceptions=None):
     deleted_roles = 0
-    if exceptions == 'None':
+    if exceptions == None:
         guild = client.get_guild(ctx.guild.id)
         for role in ctx.guild.roles:
             is_exception = False
@@ -69,13 +70,29 @@ async def delete_roles(ctx, role_name, *, exceptions='None'):
         else:
             await ctx.send(f'Found and deleted {deleted_roles} channels')
     else:
-        exceptions_cont = exceptions.split(', ')
+        try:
+            exceptions_cont = exceptions.split(' --exc ')
+            print(len(exceptions_cont))
+            print(exceptions_cont)
+            if len(exceptions_cont) > 1:
+                role_name = role_name + ' ' + exceptions_cont[0]
+                if not exceptions_cont[1] == '':
+                    exceptions = exceptions_cont[1].split(', ')
+            else:
+                exceptions = exceptions.split(', ')
+            
+        except Exception as e:
+            exceptions = exceptions.split(', ')
+        print(role_name)
+        print(exceptions)
         guild = client.get_guild(ctx.guild.id)
         for role in ctx.guild.roles:
             is_exception = False
+            if role.name == '@everyone':
+                continue
             if role.name == role_name:
 
-                for exception in exceptions_cont:
+                for exception in exceptions:
                     if int(role.id) == int(exception):
                         is_exception = True
 
@@ -89,22 +106,6 @@ async def delete_roles(ctx, role_name, *, exceptions='None'):
             await ctx.send("Couldn't find any channels with that name")
         else:
             await ctx.send(f'Found and deleted {deleted_roles} channels')
-
-
-@client.command()
-@commands.has_guild_permissions(manage_roles=True, administrator=True)
-async def delete_roles_no_ex(ctx, role_name):
-    deleted_roles = 0
-    for role in ctx.guild.roles:
-        is_exception = False
-        if role.name == role_name:
-            await role.delete()
-            deleted_roles += 1
-        if deleted_roles == 0:
-            await ctx.send("Couldn't find any channels with that name")
-        else:
-            await ctx.send(f'Found and deleted {deleted_roles} channels')
-    
 
 
 @client.command()
