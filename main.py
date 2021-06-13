@@ -72,8 +72,7 @@ async def delete_roles(ctx, role_name, *, exceptions=None):
     else:
         try:
             exceptions_cont = exceptions.split(' --exc ')
-            print(len(exceptions_cont))
-            print(exceptions_cont)
+            
             if len(exceptions_cont) > 1:
                 role_name = role_name + ' ' + exceptions_cont[0]
                 if not exceptions_cont[1] == '':
@@ -83,8 +82,7 @@ async def delete_roles(ctx, role_name, *, exceptions=None):
             
         except Exception as e:
             exceptions = exceptions.split(', ')
-        print(role_name)
-        print(exceptions)
+           
         guild = client.get_guild(ctx.guild.id)
         for role in ctx.guild.roles:
             is_exception = False
