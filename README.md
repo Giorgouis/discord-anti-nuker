@@ -1,4 +1,4 @@
-# discord-mass-channel-delete
+# discord-anti-nuker
 
 A simple bot command I made with discord.py so you can prevent or "fix" your server from a raid.
 
@@ -31,8 +31,4 @@ run the code
  #### delete_roles role_name exceptions
   ###### role_name: name of the roles you want to delete
   ###### exceptions: role Ids from roles with the same name you might not want to delete
-  if more than 1, seperate with ', '
-  
-#### delete_roles_no_ex
-###### role_name: name of the roles you want to delete
-###### This was addded beacause if role name has spaces it just doesn't work
+  ###### if role contains spaces use --exc and then exception role IDs(if none use 0)
