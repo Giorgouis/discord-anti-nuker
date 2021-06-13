@@ -32,3 +32,15 @@ run the code
   ###### role_name: name of the roles you want to delete
   ###### exceptions: role Ids from roles with the same name you might not want to delete
   ###### if role contains spaces use --exc and then exception role IDs(if none use 0)
+ 
+ ## Examples
+ 
+ roles: new role, new role
+ to delete both: ac!delete_roles new role --exc 0
+ to delete only one: ac!delete_roles new role --exc <role id of one of them>
+ 
+ roles: new, new
+ to delete both: ac!delete_roles new
+ to delete one: ac!delete_roles new <role id of one of them>
+ 
+ ### If more than 1 exception IDs, seperate with ", "
