@@ -37,10 +37,10 @@ run the code
  
  roles: new role, new role
  #### to delete both: ac!delete_roles new role --exc 0
- #### to delete only one: ac!delete_roles new role --exc <role id of one of them>
+ #### to delete only one: ac!delete_roles new role --exc role-id
  
  roles: new, new
  #### to delete both: ac!delete_roles new
- #### to delete one: ac!delete_roles new <role id of one of them>
+ #### to delete one: ac!delete_roles new role-id
  
  ### If more than 1 exception IDs, seperate with ", "
