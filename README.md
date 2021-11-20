@@ -34,11 +34,12 @@ run the code
   ###### if role contains spaces use --exc and then exception role IDs(if none use 0)
  
  ## Examples
- 
+ ### Delete roles that have spaces
  roles: new role, new role
  #### to delete both: ac!delete_roles new role --exc 0
  #### to delete only one: ac!delete_roles new role --exc role-id
  
+ ### Delete roles that have no spaces
  roles: new, new
  #### to delete both: ac!delete_roles new
  #### to delete one: ac!delete_roles new role-id
